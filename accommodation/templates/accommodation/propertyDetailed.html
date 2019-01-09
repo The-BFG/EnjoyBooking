@@ -1,0 +1,125 @@
+{% extends 'base_layout.html' %}
+    
+{% block content %}
+
+    <script>
+        var array = {{ dateList|safe }};
+        console.log(array);
+    </script>
+    <div class="detailedContainer">
+        <div class="detailLeft">
+            <div class="detailInfo">
+                <h1>{{propertyDetailed.name}}</h1>
+                <p>Created on: {{propertyDetailed.publication_date|date:"l, d F, Y"}}  <i class="far fa-calendar-alt"></i></p>
+
+                <h3>Description</h3>
+                <div id="descriptionDetailed">{{propertyDetailed.description}}</div>
+                
+                <h3>Services</h3>
+                <div id="servicesDetailed">
+                    <table>
+                        {% for service in propertyDetailed.services %}
+                            {% if forloop.counter0|divisibleby:2 %}
+                                <tr><td><i class="fas fa-square"></i>  {{service}}</td>
+                            {% else %}
+                                <td><i class="fas fa-square"></i>  {{service}}</td></tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <h3>Address</h3>
+                <div id="addressDetailed">
+                {{propertyDetailed.address}}, {{propertyDetailed.city}}, {{propertyDetailed.postal_code}}, {{propertyDetailed.country}}
+                </div>
+
+                <h3 id="priceLabel">Prezzo per notte: </h3><h2 id="price">€ {{propertyDetailed.price}}</h2>
+                
+                {% if user.is_authenticated %}
+
+                <div id="bookData">
+                    <div id="dataSelector">
+                        <h3>Select Date and Book</h3>
+                        <div>
+                            <form id="bookForm" action="{% url 'accommodation:reservation' %}" method="post">
+                                {% csrf_token %}
+                                <table id="bookTable">
+                                    {{reservationForm.as_table}}
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="priceCalc">
+                        <h3>Total price</h3>
+                        <h2 id="totalPrice">€ 0</h2>
+                    </div>
+                </div>
+                <div id="detailBtn">    
+                    <button id="bookProperty" value="Book" type="submit" name="bookProperty" form="bookForm"><i class="far fa-calendar-check"></i> Book</button>
+                    {% if user == propertyDetailed.seller%}
+                        <button id="modifyProperty"><i class="fas fa-edit"></i> Modify Property</button>
+                    {% endif %} 
+                </div>
+                
+                    
+                {% endif %}                 
+            </div>
+            
+            {% if user == propertyDetailed.seller%}
+            <div class="detailModify">
+                <h1>Edit property information</h1>
+                <form id="modifyPropertyForm" method="post"> {% comment %} action="{% url 'accommodation:propertyDetailed' pk=propertyDetailed.pk %}" {% endcomment %}
+                    {% csrf_token %}
+                    <table id="modifyPropertyTable">
+                        {{modifyPropertyForm.as_table}}
+                    </table>
+                    <button id="saveModify" value="save" type="submit" name="saveModify" form="modifyPropertyForm"><i class="fas fa-save"></i> Update</button>
+                </form>
+            </div>
+
+            <div id="futureReservation">
+                <h2>Future reservations for this property</h2>
+                {% if reservationList %}
+                <table class="propertyReservationTable">
+                    <thead class="propertyReservationTableHead">
+                        <th>Guest Email</th>
+                        <th>Check-in</th>
+                        <th>Check-out</th>
+                        <th>Total Cost</th>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservationList %}
+                        <tr>
+                            <td class="alignCenter"><b>{{reservation.user}}</b></td>
+                            <td class="alignCenter">{{reservation.checkin}}</td>
+                            <td class="alignCenter">{{reservation.checkout}}</td>
+                            <td class="alignCenter">€ {{reservation.total_price}}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <div>No reservation for this property yet.</div>
+
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+        </div>
+
+
+        <div class="detailRight">
+            <div class="detailPic">
+                {% for image in propertyImages %}
+                    <div class="picContainer">
+                        <a href="/media/{{image.image}}" class="image-link">
+                            <img src="/media/{{image.image}}" alt="/media/{{image.image}}">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

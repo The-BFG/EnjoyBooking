@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Enjoy Booking</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'image/favicon.ico' %} "/>
+        <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'/>
+        <link rel="stylesheet" type="text/css" href='{% static "js/jquery-ui-1.12.1.custom/jquery-ui.min.css" %}'>
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">        
+        <link rel="stylesheet" type="text/css" href='{% static "js/viewbox-master/viewbox.css" %}'>
+        
+    </head>
+    <body>
+        <header class="headerWrapper">
+            <div class="topnav" id="topnavMenu">
+                <a id="logo" href="{%url 'accommodation:index'%}"><img src="{% static 'image/logo.jpg'%}" alt="EnjoyBooking"/></a>
+                <a class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{%url 'accommodation:index'%}">Home</a>
+                <a class="{% if request.resolver_match.url_name == 'reservation' %}active{% endif %}" href="{% url 'accommodation:reservation'%}">My Reservation</a>
+                <a class="{% if request.resolver_match.url_name == 'property' %}active{% endif %}" href="{% url 'accommodation:property'%}">Your Property</a>
+
+                {% if user.is_authenticated %}
+                    <form id="logout-form" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}     
+                        <a class="rightSide {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="javascript:{}" onclick="document.getElementById('logout-form').submit();">Logout</a>                     
+                    </form>
+                    <a class="rightSide {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'accounts:profile' %}"><i style="font-size:20px" class="far fa-user"></i> {{ user.email }}</a>
+                {% else %}
+                    <a class="rightSide {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'accounts:login' %}">Login</a>
+                    <a class="rightSide {% if request.resolver_match.url_name == 'signup' %}active{% endif %}" href="{% url 'accounts:signup' %}">Signup</a>                    
+                {% endif %}
+
+                <a href="javascript:void(0);" class="icon" onclick="responsiveMenuFunc()">
+                    <i class="fas fa-align-justify"></i>
+                </a>
+            </div>
+        </header>
+
+        <div class="mainWrapper">
+            {%block content%}
+            {%endblock%}
+        </div>
+        <script type="text/javascript" src='{% static "js/jquery-3.3.1.min.js" %}'></script>
+        <script type="text/javascript" src='{% static "js/jquery-ui-1.12.1.custom/jquery-ui.min.js" %}'></script>
+        <script type="text/javascript" src='{% static "js/viewbox-master/jquery.viewbox.min.js" %}'></script>
+        <script type="text/javascript" src='{% static "js/custom.js" %}'></script>
+    </body>
+</html>

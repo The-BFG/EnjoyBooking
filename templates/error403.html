@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+    
+{% block content %}
+
+    <div class="Forbidden403">
+        <h2>Access denied</h2> 
+        <h3>Error 403</h3>
+        {% if not user.is_authenticated %}
+        <h3>The requested resource requires an authentication.</h3>
+            <a href="{% url 'accounts:login' %}"><button class="greenButton">Login</button></a>&nbsp;
+            <a href="{% url 'accounts:signup' %}"><button class="greenButton">Signup</button></a>
+        {% endif %}
+    </div>
+
+{% endblock %}

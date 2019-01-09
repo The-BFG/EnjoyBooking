@@ -1,0 +1,12 @@
+{% extends 'base_layout.html'%}
+
+{%block content%}
+    <h3>Insert your credentials:</h3>
+    <form class="login-form" action="{% url 'accounts:login' %}" method="post">
+        <table>
+            {% csrf_token %}
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Login">
+    </form>
+{%endblock%}2

@@ -1,0 +1,83 @@
+{% extends 'base_layout.html'%}
+    
+{%block content%}
+    <div id="container">
+        <div id="searchContainer">
+            <form action="{% url 'accommodation:index' %}" method="post">
+                {% csrf_token %}
+                <h2 id="searchBarTitle">Search Property</h2>
+                <table id="searchTable">
+                    <thead>
+                        <th class="alignLeft">Service</th>
+                        <th class="alignLeft">Check-in</th>
+                        <th class="alignLeft">Check-out</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{searchForm.service}}</td>
+                            <td>{{searchForm.inDate}}</td>
+                            <td>{{searchForm.outDate}}</td>
+                            <td><button type="submit" id="searchButton"><i class="fas fa-search"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div id="accommodationListContainer">
+            {% if searchResult %}
+                <h2>Search result:</h2>
+                <div id="searchResultContainer">
+                    {% for result in searchResult %}
+                        <div class="resultBackground">
+                            <div class="resultContainer">
+                                    {% if searchResultImage %}
+                                    {% for image in searchResultImage%}
+                                        {% if image.accommodation_id == result.id %}
+                                            <a href='{% url "accommodation:propertyDetailed" pk=result.id %}'>
+                                                <div class="previewImage"><img src="/media/{{image.image}}"></div>
+                                            </a>
+                                            {{ "<!--" }}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ "<!--" }}  
+                                    {{ "-->" }}
+                                {% endif %}
+                                <a href='{% url "accommodation:propertyDetailed" pk=result.id %}'><h3 class="resultTitle">{{result.name}}</h3></a>
+                                <div>{{result.city}}, {{result.country}}</div>
+                                <div>Per Night: €{{result.price}}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if top10 %}
+                <h2 id="top10title">Top 10 most booked accommodation:</h2>
+                <div id="top10Container">
+                    {% for result in top10 %}
+                        <div class="resultBackground">
+                            <div class="resultContainer">
+                                {% if top10image %}
+                                    {% for image in top10image%}
+                                        {% if image.accommodation_id == result.id %}
+                                            <a href='{% url "accommodation:propertyDetailed" pk=result.id %}'>
+                                                <div class="previewImage"><img src="/media/{{image.image}}"></div>
+                                            </a>
+                                                {{ "<!--" }}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ "<!--" }}  
+                                    {{ "-->" }}
+                                {% endif %}
+                                <a href='{% url "accommodation:propertyDetailed" pk=result.id %}'><h3 class="resultTitle">{{result.name}}</h3></a>
+                                <div class="numberReservation">Prenotato gia: {{result.n_res}} volte.</div>
+                                <div>{{result.city}}, {{result.country}}</div>
+                                <div>Per Night: €{{result.price}}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+{%endblock%}

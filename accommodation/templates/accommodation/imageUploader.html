@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+    
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <div class="centerinPage">
+        <form action="{% url 'accommodation:imageUploader' %}" method="post" enctype="multipart/form-data">
+            <table id="imageLoaderTable">
+                {% csrf_token %}
+                {{ imgForm }}
+            </table>
+            <div class="fill-div paddingTopBtn">
+                <button type="submit" id="uploadNextBtn" name="uploadNext">Save and Upload Next</button>
+                <button type="submit" id="uploadExit" name="uploadExit">Save and Exit</button>
+                <button id="exit" name="exit">Exit</button>
+            </div>
+        </form>
+    </div>
+
+    {% else %}
+        {% include error403 %}
+    {% endif %}
+
+{% endblock %}

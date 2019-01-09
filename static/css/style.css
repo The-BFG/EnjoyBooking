@@ -1,0 +1,834 @@
+body {
+    margin: 0;
+}
+
+.mainWrapper {
+    display: table;
+    width: 100%;
+}
+
+a{
+    color: #015f3b;
+    text-decoration: none;
+}
+
+
+
+/* ######################################################################### */
+/* Navigation Menu CSS settings */
+
+#logo {
+    padding:0;
+}
+#logo > img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    padding: 0;
+}
+
+/* Dark green background color top navigation */
+.topnav {
+    background-color: #015f3b;
+    overflow: hidden;
+    position: relative;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;  
+}
+
+.topnav a:hover {
+    background-color: #007e4e; 
+    color: white;
+}
+
+.active {
+    background-color: #007e4e;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+    font-size:32px;
+}   
+.topnav .rightSide {
+    float: right;
+} 
+@media screen and (max-width: 961px) {
+    .topnav a:not(:first-child) {display: none;}
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+    .topnav.responsive {position: relative;}
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+
+
+
+/* ######################################################################### */
+/* Index Search properties */
+#container{
+    padding: 10px;
+}
+
+#searchContainer{
+    background-color: #007e4e;
+    color: #ffffff;
+}
+
+#searchTable{
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.numberReservation{
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 8px;
+}
+
+.resultBackground{
+    float:left;
+    padding:10px 10px;
+    background-color: #007e4e;
+}
+
+.resultTitle{
+    margin: 10px auto;
+}
+
+#top10container{
+    margin-top: -10px;
+}
+
+#top10title{
+    padding-top: 20px;
+}
+
+#accommodationListContainer h2{
+    float: left;
+    width: 100%;
+}
+
+.resultContainer{
+    padding: 10px;
+    background-color: #ffffff;
+    width: 320px;
+    height: 380px;
+}
+
+.previewImage{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.previewImage img{
+    max-width: 100%;
+    max-height: 100%; 
+}
+
+#searchBarTitle{
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding-top: 5px;
+}
+
+
+/* ######################################################################### */
+/* User Profile section CSS*/
+.profileLeft{
+    display: table-cell;
+    float: left;    
+    text-align: right;
+    width: 40%;
+    padding-top: 40px;
+}
+
+.profileRight{
+    display: table-cell;
+    float: left;
+    text-align: left;
+    width: 60%;
+    padding-top: 40px;
+}
+
+.profileRight th{
+    font-weight: bold;
+}
+
+#profileImage{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.paddingLeft{
+    padding-left: 50px;
+}
+
+#changeAvatar,
+#changeUserData{
+    display: none;
+}
+
+#uploadAvatarBtn,
+#editAvatarBtn,
+#editInfoBtn,
+#saveChangeBtn,
+#showAddPropertyBtn,
+.deleteFormBtn,
+.greenButton{
+    background-color: #015f3b;
+    color:white;
+    width: 300px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#changeAvatarTable{
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+#uploadAvatarBtn:hover,
+#editAvatarBtn:hover,
+#editInfoBtn:hover,
+#saveChangeBtn:hover,
+#showAddPropertyBtn:hover{
+    background-color: #007e4e;
+}
+
+#showUserData{
+    font-size: 18px;
+}
+
+#changeUserData{
+    font-size: 18px;
+}
+
+.fill-div{
+    width: 100%;
+}
+
+.paddingTopBtn{
+    padding-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    #profileImage{
+        width: 220px;
+        height: 220px;
+    }
+
+    #saveChangeBtn,
+    #editAvatarBtn{
+        width: 220px;
+    }
+}
+
+@media screen and (max-width: 961px) {
+    #profileImage{
+        width: 200px;
+        height: 200px;
+    }
+
+    #saveChangeBtn,
+    #editAvatarBtn,
+    #editInfoBtn{
+        width: 200px;
+    }
+
+    .profileLeft, .profileRight{
+        text-align: left;
+        width: 100%;    
+        padding-top: 20px;
+    }
+
+    #showUserData{
+        padding-left:0px;
+    }
+
+    #showDataTable,
+    #changeDataTable{
+        margin-left:auto; 
+        margin-right:auto;
+    }
+
+    #showDataTable + div{
+        text-align: center;
+    }
+    #changeUserData,
+    #saveBtnDiv{
+        padding-left:0px;
+        text-align: center;
+    }
+
+    .fill-div{
+        text-align: center;
+    }
+
+    #changeAvatarTable{
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+
+/* ######################################################################### */
+/* Reservation/Property Manager without login CSS */
+
+* {
+    box-sizing: border-box;
+}
+.menuitem {
+    padding: 8px;
+    margin-top: 7px;
+    border-bottom: 1px solid #f1f1f1;
+}
+.infoManager {
+    float: center;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 20px 0px 0px 0px;
+    overflow: hidden;
+}
+.infoButton {
+    float: center;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px 20px;
+    margin: 0px 0px 10px 0px;
+}
+.infoBox {
+    overflow:auto;
+    background-color: #007e4e;
+}
+
+.reservationContainer{
+    padding: 10px;
+}
+
+.journeyTitle{
+    color: #015f3b;
+    text-transform: uppercase;
+}
+
+.reservationTable,
+.propertyReservationTable{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reservationTable th,
+.propertyReservationTable th{
+    padding: 10px 0px;
+}
+
+.alignCenter{
+    text-align: center;
+}
+
+.alignLeft{
+    text-align: left;
+}
+
+.alignRight{
+    text-align: right;
+}
+
+.vertAlignCenter{
+    vertical-align: center;
+}
+
+.reservationTableHead,
+.propertyReservationTableHead{
+    background-color: #015f3b;
+    color: #ffffff;
+}
+
+#searchLink:link, #searchLink:visited {
+    color: #015f3b;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#searchLink:hover, #searchLink:link:active, #searchLink:visited:active {
+    color: #007e4e;
+}
+
+.redIcon{
+    color:#960000;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width:800px) {
+    /* For mobile phones: */
+    .infoManager, .infoButton {
+        width: 100%;
+        text-align: center;
+    }
+  }
+
+
+
+
+/* ######################################################################### */
+/* List and add property page CSS*/
+
+/* For desktop view of property list: */
+.propertyLeftColumn{
+    width: 80%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.propertyRightColumn{
+    vertical-align: top;
+    width: 20%;
+    display: table-cell;
+    float: left;
+}
+
+#propertyListDiv{
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+#propertyListDiv h2{
+    margin: 0px 0px 5px 0px; 
+}
+
+#propertyContainerVertical{
+    display:none
+}
+
+#propertyListHeader th{
+    background-color: #015f3b;
+    color: #ffffff;
+    border-bottom: 1px solid #015f3b;
+    border-right: 1px solid #ffffff;
+    padding: 0px 3px;
+    height: 50px;
+}
+
+#propertyContainerHorizontal{
+    padding-left: 15px;
+}
+
+#propertyContainerHorizontal td,
+.reservationTable td{
+    border-bottom: 1px solid #015f3b;
+    padding: 10px 3px 5px 3px;
+}
+
+#propertyTableList{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.previewButton{
+    display: block;
+    width: 100%;
+    background-color: #015f3b;
+    color: white;   
+    text-decoration: none;
+    border-radius: 8px;
+    padding:5px 0px;
+    text-align: center;
+    padding-top: -10px;
+    font-size: 20px;
+}
+
+
+.previewButton:hover{
+    background-color: #007e4e;
+}
+
+.addProperty{
+    float: left;
+    background-color: #ccffb3;
+    padding: 10px;
+    margin: 20px;
+}
+
+.addProperty h2{
+    padding:0px;
+    margin:0px;
+}
+
+.addProperty th,.addProperty td{
+    text-align: left;
+}
+
+.addProperty input{
+    width: 100%;
+}
+
+.propertyList{
+    float: left;
+    margin: 20px;
+}
+
+.tablefitdiv{
+    width: 100%;
+}
+.tablefitdiv input, .tablefitdiv textarea{
+    width: 100%;
+} 
+
+.uploadBtn{
+    width: 45%;
+    padding-top: 10px;
+    padding-right: 5px; 
+    float: left;
+}
+
+.uploadBtn input{
+    width: 100%;
+    color: white;   
+    background-color: #015f3b;
+    border-radius: 8px;
+}
+.uploadBtn input:hover{
+    background-color: #007e4e;
+}
+
+.showAddProperty{
+    display:none;
+    padding: 20px 0px 20px 0px;
+}
+
+#addPropertyBtn{
+    padding: 10px 0px 10px 0px;
+}
+
+.cancelUpload{
+    float: left;
+    width: 45%;
+    padding-top: 10px;
+    padding-right: 5px; 
+    display: none;
+}
+
+#cancelUpload{
+    width: 100%;
+    color: white; 
+    background-color: #015f3b;
+    border-radius: 8px;
+    padding: 10px 0px 10px 0px;
+}
+
+#cancelUpload:hover{
+    background-color: #007e4e;
+}
+
+.arrow-green{
+    color: #015f3b;
+    font-size: 30px;
+}
+
+/* Mobile property managing */
+@media only screen and (max-width: 1660px) {
+    .propertyLeftColumn{
+        width: 100%;
+        margin: 0px;
+        display: table-row;
+    }
+    .propertyRightColumn{
+        width: 100%;
+        height: 100%;
+        display: table-row;
+        display: none;
+    }
+
+    #propertyContainerHorizontal{
+        display: none;
+    }
+
+    #propertyContainerVertical{
+        display: block;
+    }
+    
+    .addProperty {
+        width: 100%;
+        margin: 0px;
+    }
+
+    #addPropertyForm h3{
+        padding-bottom: 10px;
+    }
+    
+    .propertyList {
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+    .showAddProperty {
+        width: 100%;
+        display: block;
+    }
+
+    #showAddPropertyBtn{
+        width: 100%;
+    }
+
+    #propertyTable{
+        width:100%;
+    }
+
+    #propertyListDiv h3{
+        padding-left: 10px;
+        padding-bottom: 5px;
+        width: 100%;
+    }
+
+    .cancelUpload{
+        display:none;
+    }
+
+    .arrow-green{
+        color: #ffffff;
+        font-size: 20px;
+    }
+}
+
+
+/* Image Uploader*/
+.centerinPage{
+    padding-top: 100px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#imageLoaderTable{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+#uploadExit,
+#uploadNextBtn,
+#exit{
+    color: white;   
+    background-color: #015f3b;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* ######################################################################### */
+
+/* Detailed view */
+
+/* ######################################################################### */
+
+.detailedContainer{
+    display: table;
+    padding: 15px;
+    width: 100%;
+}
+
+.detailLeft{
+    display: table-cell;
+    width: 40%;
+    vertical-align: top;
+    float: left;
+    padding-right: 10px;
+}
+
+.detailRight{
+    display: table-cell;
+    width:60%;
+    float: left;
+}
+
+.detailInfo{
+}
+
+.detailInfo h1{
+    color: #015f3b;
+    text-transform: uppercase;
+}
+
+.detailInfo p{
+    color: #007e4e;
+}
+
+.detailPic{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    background-color: #007e4e;
+    padding: 10px;
+}
+
+.picContainer{
+    margin: 10px 5px;
+    width: auto;
+    float: left;
+    background-color: #ffffff;
+}
+
+.picContainer img{
+    max-width: 100%;
+    height: 250px;
+    padding: 5px 5px 0px 5px;
+}
+
+.image-link{
+    font-size: 0px;
+}
+
+#detailTable{
+    font-size: 19px;
+}
+
+#detailTable th{
+    text-align: left;
+    padding: 10px 0px 20px 0px;
+}
+
+#detailTable th + td{
+    padding: 10px 0px 10px 20px;
+}
+
+.detailInfo p{
+    margin-top: -15px;
+    margin-bottom: 35px;
+    font-size: 15px;
+}
+
+.detailModify{
+    display: none;
+    margin-bottom: 35px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.detailModify h1{
+    color: #015f3b;
+}
+
+#descriptionDetailed{
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+#servicesDetailed td{
+    padding:5px 0px;
+}
+
+#servicesDetailed td + td{
+    padding-left: 40px;
+}
+
+#bookProperty,
+#modifyProperty,
+#saveModify{
+    background-color: #015f3b;
+    color:white;
+    width: 250px;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+#addressDetailed{
+    padding-bottom: 30px;
+}
+
+#priceLabel{
+    display: inline;
+}
+
+#price{
+    display: inline;
+    color: #015f3b;
+}
+
+#bookData{
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+#bookTable{
+    table-layout:fixed;
+    width: 100%;
+}
+
+#bookTable th{
+    text-align: left;
+    width: 95px;
+}
+
+#id_checkin,
+#id_checkout{
+    width: 100%;
+}
+
+#dataSelector{
+    float: left;
+    width: 70%;
+}
+
+#priceCalc{
+    text-align: right;
+    padding-right: 10px;
+    float: left;
+    width: 30%;
+}
+
+#detailBtn{
+    display: block;
+}
+
+@media only screen and (max-width: 961px) {
+    .detailLeft{
+        display: table-cell;
+        width: 100%;
+    }
+    
+    .detailRight{
+        display: table-cell;
+        width: 100%;
+    }
+}

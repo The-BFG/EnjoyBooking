@@ -1,0 +1,114 @@
+{% extends 'base_layout.html' %}
+    
+{% block content %}
+ 
+    {% if user.is_authenticated %}
+
+        <div class="propertyLeftColumn">
+            <div id="propertyListDiv" class="propertyList">
+                <h2>Here you can see all your property, open to modify.</h2>
+            </div>
+            {% if property_list %}
+                <div id="propertyContainerHorizontal">
+                    <table id="propertyTableList">
+                        <thead id="propertyListHeader">
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Beds</th>
+                            <th>Price</th>
+                            <th>Services</th>
+                            <th>Description</th>
+                            <th>Publication Date</th>
+                            <th>View</th>
+                        </thead>
+                        {% for property in property_list %}
+                            <tr>
+                                <td><a href='{% url "accommodation:propertyDetailed" pk=property.pk %}'><b>{{property.name}}</b></a</td>
+                                <td>{{property.address}}, {{property.city}}, {{property.postal_code}}, {{property.country}}</td>
+                                <td>{{property.beds}}</td>
+                                <td>{{property.price}}</td>
+                                <td>
+                                    {% for service in property.services %}
+                                        {% if not forloop.last %}
+                                            {{service}},
+                                        {% else %}
+                                            {{service}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>{{property.description}}</td>
+                                <td>{{property.publication_date|date:"d/m/Y"}}</td>
+                                <td><a href="{% url 'accommodation:propertyDetailed' pk=property.pk %}"><i class="arrow-green fas fa-arrow-right"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div id="propertyContainerVertical">
+                    <table>
+                        {% for property in property_list %}
+                            <tr><th>Name</th><td><a href='{% url "accommodation:propertyDetailed" pk=property.pk %}'><b>{{property.name}}</b></a></td>
+                            <tr><th>Address</th><td>{{property.address}}, {{property.city}}, {{property.postal_code}}, {{property.country}}</td></tr>
+                            <tr><th>Beds</th><td>{{property.beds}}</td></tr>
+                            <tr><th>Price</th><td>{{property.price}}</td></tr>
+                            <tr><th>Services</th>
+                                <td>
+                                    {% for service in property.services %}
+                                        {% if not forloop.last %}
+                                            {{service}},
+                                        {% else %}
+                                            {{service}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr><th>Description</th><td>{{property.description}}</td></tr>
+                            <tr><th>Publication Date</th><td>{{property.publication_date|date:"d/m/Y"}}</td></tr>
+                            <tr><td colspan="2"><a class="previewButton" href="{% url 'accommodation:propertyDetailed' pk=property.pk %}">View Preview <i class="arrow-green fas fa-arrow-right"></i></a></td></tr>
+                            <tr style="min-height: 50px;"></tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <div>Add a new property and start selling your accommodations.</div>
+            {% endif %}
+
+            <div id="showAddProperty" class="showAddProperty">
+                <button id="showAddPropertyBtn" name="showAddProperty">Add Property</button>
+            </div>
+        </div>
+
+        <div id="propertyRightColumn" class="propertyRightColumn">
+            <div id="addPropertyForm" class="addProperty">
+                <h2>Add new property</h2>
+                <form class="property-form" action="{% url 'accommodation:property' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table id="propertyTable">
+                        {{ form.as_table }}
+                    </table>
+                    <div class="containerUploadPropertyBtn">
+                        <div class="uploadBtn"><input type="submit" id="addPropertyBtn" name="newAcc" value="Add Property"></div>
+                        <div class="cancelUpload"><button id="cancelUpload" name="cancelUpload">Cancel</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>   
+        
+    {% else %}
+        <div class="infoBox">
+            <div class="infoManager">
+                <h3>
+                    In this section you can easily list your property.
+                </h3>  
+                <h4>
+                    You need to login or to register if you haven't already done.
+                </h4>   
+            </div>
+            <div class="infoButton">
+                <a href="{% url 'accounts:login' %}"><button>Login</button></a>&nbsp;
+                <a href="{% url 'accounts:signup' %}"><button>Signup</button></a>
+            </div>
+        </div>
+    {% endif %}
+    
+{% endblock %}
