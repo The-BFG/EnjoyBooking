@@ -5,8 +5,14 @@ University project written in python 3.6 using Django 2.0.5. A booking site in A
 # Installation instructions:
 
 Corretto settaggio per accedere correttamente al DB da Django:  
-1_mysql -u root -p #accedere a mysql con utente root  
-2_CREATE DATABASE enjoyBooking;  
+#accedere a mysql con utente con permessi elevati.
+```sh
+mysql -u root -p 
+  
+```
+```mysql
+CREATE DATABASE enjoyBooking;  
+```
 3_CREATE USER 'enjoy'@'localhost' IDENTIFIED BY 'enjoyBooking'; #che sono i dati che vengono usati nel progetto.  
 4_GRANT ALL PRIVILEGES ON enjoyBooking.* TO 'enjoy'@'localhost';  
 5_FLUSH PRIVILEGES;  
