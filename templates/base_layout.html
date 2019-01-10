@@ -22,7 +22,7 @@
                 {% if user.is_authenticated %}
                     <form id="logout-form" action="{% url 'accounts:logout' %}" method="post">
                         {% csrf_token %}     
-                        <a class="rightSide {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="javascript:{}" onclick="document.getElementById('logout-form').submit();">Logout</a>                     
+                        <a class="rightSide {% if request.resolver_match.url_name == 'logout' %}active{% endif %}" href="javascript:{}" onclick="document.getElementById('logout-form').submit();">Logout <i style="font-size:22px" class="fas fa-sign-out-alt"></i></a>                     
                     </form>
                     <a class="rightSide {% if request.resolver_match.url_name == 'profile' %}active{% endif %}" href="{% url 'accounts:profile' %}"><i style="font-size:20px" class="far fa-user"></i> {{ user.email }}</a>
                 {% else %}

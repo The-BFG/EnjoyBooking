@@ -5,9 +5,11 @@
     <form class="signup-form" action="{% url 'accounts:signup' %}" method="post" enctype="multipart/form-data">
         <table>
             {% csrf_token %}
-            {{ form.as_table }}
+            {{ userForm.as_table }}
+            {% csrf_token %}
+            {{ avatarForm.as_table}}
         </table>
-        <input type="submit" value="Signup">
+        <input type="submit" value="Signup" id='signupBtn'>
     </form>
 {%endblock%}
 

@@ -136,6 +136,9 @@ jQuery(document).ready(function($){
         }
     });
 
+    $(function(){
+        $('.image-link').viewbox();
+    });
     
 });     
 
@@ -155,7 +158,3 @@ function getNightNumber(inDate, outDate){
     // console.log(outDate);
     return Math.abs(outDate-inDate)/(1000*60*60*24);
 }
-
-$(function(){
-    $('.image-link').viewbox();
-});

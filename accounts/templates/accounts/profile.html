@@ -4,10 +4,10 @@
 {%block content%}
     <div class="profileLeft">   
         <div class="fill-div">
-            {% if user.avatar == "/static/image/defaultProfile.png" %}
+            {% if avatar.avatar == "/static/image/defaultProfile.png" %}
                 <img id="profileImage" src="{% static 'image/defaultProfile.png' %}" alt="static/image/defaultProfile.png"/>
             {% else %}
-                <img id="profileImage" src="{{ user.avatar.url }}" alt="{{ user.avatar }}"/>
+                <img id="profileImage" src="{{ avatar.avatar.url }}" alt="{{ avatar.avatar }}"/>
             {% endif %}   
         </div> 
         <div id="editAvatar" class="fill-div paddingTopBtn"><button id="editAvatarBtn"><i class="fas fa-user-edit"> Change avatar</i></button></div>

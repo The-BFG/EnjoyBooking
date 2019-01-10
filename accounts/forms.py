@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import CustomUser
+from .models import CustomUser,Avatar
 
 
 class UserCreationForm(forms.ModelForm):
@@ -11,7 +11,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['email', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'avatar', 'phone']# 'date_joined', 'last_login'
+        fields = ['email', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'phone']
         
         labels = {
             'email': ('*Email'),
@@ -19,7 +19,6 @@ class UserCreationForm(forms.ModelForm):
             'last_name': ('*Surname'),
             'birth_date': ('Date of Birth'),
             'postal_code': ('Postal Code'),
-            'avatar': ('Profile picture'),
             'phone': ('Phone Number'),
             'last_login': ('Last login'),
             'date_joined': ('Date joined'),
@@ -32,33 +31,6 @@ class UserCreationForm(forms.ModelForm):
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError("Passwords don't match")
         return password2
-
-    def clean_avatar(self):
-        avatar = self.cleaned_data.get('avatar')
-        # try:
-        #     w, h = get_image_dimensions(avatar)
-        #     #validate dimensions
-        #     max_width = max_height = 1920
-        #     if w > max_width or h > max_height:
-        #         raise forms.ValidationError(u'Please use an image that is %s x %s pixels or smaller.' % (max_width, max_height))
-
-        #     #validate content type
-        #     main, sub = avatar.content_type.split('/')
-        #     if not (main == 'image' and sub in ['jpeg', 'pjpeg', 'gif', 'png']):
-        #         raise forms.ValidationError(u'Please use a JPEG, GIF or PNG image.')
-
-        #     #validate file size
-        #     if len(avatar) > (20 * 1024):
-        #         raise forms.ValidationError(u'Avatar file size may not exceed 20k.')
-
-        # except AttributeError:
-        #     """
-        #     Handles case when we are updating the user profile
-        #     and do not supply a new avatar
-        #     """
-        #     raise forms.ValidationError(u'Please load an image')
-
-        return avatar
 
     def save(self, commit=True):
         # Save the provided password in hashed format
@@ -74,7 +46,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ('email', 'password', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'avatar', 'phone', 'is_active', 'is_admin')
+        fields = ('email', 'password', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'phone', 'is_active', 'is_admin')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value. This is done here, rather than on the field, because the
@@ -95,8 +67,14 @@ class EditProfileForm(forms.ModelForm):
             'phone',
         )
 
+class AvatarForm(forms.ModelForm):
+    #image = forms.ImageField(label='Image')    
+    class Meta:
+        model = Avatar
+        fields = ('avatar', ) 
+
 class ChangeAvatarForm(forms.ModelForm):
     class Meta:
-        model = CustomUser
-        fields = ['avatar']
+        model = Avatar
+        fields = ('avatar',)
         labels = {'avatar': ('Select profile picture'), }
