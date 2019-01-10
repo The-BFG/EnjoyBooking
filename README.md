@@ -37,7 +37,7 @@ python3 manage.py migrate
 ```
 Se si vuole invece popolare il sito con dati di test dare il seguente comando:  
 ```sh
-mysql -u enjoy -p enjoyBooking < enjoyBooking.sql .  
+mysql -u enjoy -p enjoyBooking < enjoyBooking.sql  
 ```
 Per creare un nuovo utente admin dare il comando e inserire i dati richiesti:  
 ```sh
