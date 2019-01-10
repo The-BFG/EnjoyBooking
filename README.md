@@ -32,8 +32,8 @@ git clone https://github.com/The-BFG/EnjoyBooking.git
 ```
 Se si vuole avere un progetto pulito senza dati allora eliminare tutti i file *.py presenti in migrations tranne "__init__.py" e tutti i file *.pyc in migrations/__pycache__/*pyc dopodichè dare i comandi:  
 ```sh
-python manage.py makemigrations [app]  
-python manage.py migrate  
+python3 manage.py makemigrations [app]  
+python3 manage.py migrate  
 ```
 Se si vuole invece popolare il sito con dati di test dare il seguente comando:  
 ```sh
@@ -41,11 +41,11 @@ mysql -u enjoy -p enjoyBooking < enjoyBooking.sql .
 ```
 Per creare un nuovo utente admin dare il comando e inserire i dati richiesti:  
 ```sh
-python manage.py createsuperuser 
+python3 manage.py createsuperuser 
 ```
 Per fare partire il server in locale sulla porta 8000 con il seguente comando:  
 ```sh
-python manage.py runserver  
+python3 manage.py runserver  
 ```  
   
 Alla fine del test del progetto usare i seguenti comandi per eliminare tutto:  
