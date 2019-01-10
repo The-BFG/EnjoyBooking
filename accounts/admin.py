@@ -11,11 +11,11 @@ class UserAdmin(BaseUserAdmin):
     add_form = UserCreationForm
 
     # The fields to be used in displaying the User model. These override the definitions on the base UserAdmin that reference specific fields on auth.User.
-    list_display = ('email', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'avatar', 'phone', 'is_admin')
+    list_display = ('email', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'phone', 'is_admin')
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('avatar', 'first_name', 'last_name', 'birth_date', 'phone')}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'birth_date', 'phone')}),
         ('Address', {'fields': ('city', 'address', 'postal_code')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
         ('Permissions', {'fields': ('is_admin',)}),
@@ -24,7 +24,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'first_name', 'last_name', 'birth_date', 'avatar', 'city', 'address', 'postal_code', 'phone', 'password1', 'password2')}
+            'fields': ('email', 'first_name', 'last_name', 'birth_date', 'city', 'address', 'postal_code', 'phone', 'password1', 'password2')}
         ),
     )
     search_fields = ('email','first_name','last_name')
