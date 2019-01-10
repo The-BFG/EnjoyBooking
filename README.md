@@ -14,7 +14,7 @@ mysql -u root -p
 CREATE DATABASE enjoyBooking; 
 CREATE USER 'enjoy'@'localhost' IDENTIFIED BY 'enjoyBooking';  
 GRANT ALL PRIVILEGES ON enjoyBooking.* TO 'enjoy'@'localhost';  
-exit 
+EXIT
 ```
 Installare i seguenti applicativi se non sono gia installati:
 ```sh
