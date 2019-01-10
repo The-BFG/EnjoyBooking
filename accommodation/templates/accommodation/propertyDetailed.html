@@ -59,9 +59,13 @@
                     {% if user == propertyDetailed.seller%}
                         <button id="modifyProperty"><i class="fas fa-edit"></i> Modify Property</button>
                     {% endif %} 
-                </div>
-                
-                    
+                </div>           
+                {% else %}
+                    <h2>You need to be authenticated for book a reservation.</h2>
+                    <div >
+                        <a href="{% url 'accounts:login' %}"><button class="greenButton">Login</button></a>&nbsp;
+                        <a href="{% url 'accounts:signup' %}"><button class="greenButton">Signup</button></a>
+                    </div>
                 {% endif %}                 
             </div>
             
@@ -100,14 +104,10 @@
                 </table>
                 {% else %}
                     <div>No reservation for this property yet.</div>
-
                 {% endif %}
-
             </div>
             {% endif %}
-
         </div>
-
 
         <div class="detailRight">
             <div class="detailPic">

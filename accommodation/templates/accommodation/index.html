@@ -40,7 +40,7 @@
                                         {% endif %}
                                     {% endfor %}
                                     {{ "<!--" }}  
-                                    {{ "-->" }}
+                                    {{ "-->" }} 
                                 {% endif %}
                                 <a href='{% url "accommodation:propertyDetailed" pk=result.id %}'><h3 class="resultTitle">{{result.name}}</h3></a>
                                 <div>{{result.city}}, {{result.country}}</div>
@@ -49,6 +49,10 @@
                         </div>
                     {% endfor %}
                 </div>
+            {% else %}
+                {% if message %}
+                    <h2>{{message}}</h2>
+                {% endif %}
             {% endif %}
             {% if top10 %}
                 <h2 id="top10title">Top 10 most booked accommodation:</h2>

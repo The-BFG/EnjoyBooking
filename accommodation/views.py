@@ -43,8 +43,13 @@ def index_view(request):
             else:
                 searchResult = searchResult
 
+            if not len(searchResult):
+                message = "No result with the selected services or dates."
+            else:
+                message= ""
+
             searchResultImage = AccommodationImage.objects.filter(accommodation_id__in=searchResult.values('id')).values('accommodation_id', 'image').order_by('id')
-            return render(request, 'accommodation/index.html', {'searchForm':searchForm, 'searchResult':searchResult, 'searchResultImage':searchResultImage, 'top10':top10, 'top10image':top10image})  
+            return render(request, 'accommodation/index.html', {'searchForm':searchForm, 'searchResult':searchResult, 'searchResultImage':searchResultImage, 'top10':top10, 'top10image':top10image, 'message':message})  
     else:
         searchForm = SearchForm()      
         return render(request,'accommodation/index.html', {'searchForm':searchForm, 'top10':top10, 'top10image':top10image})
