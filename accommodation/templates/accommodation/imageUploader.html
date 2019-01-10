@@ -4,6 +4,7 @@
 
     {% if user.is_authenticated %}
     <div class="centerinPage">
+        <form action="{% url 'accommodation:imageUploader' %}" method="post" id="fakeForm">{% csrf_token %}</form>
         <form action="{% url 'accommodation:imageUploader' %}" method="post" enctype="multipart/form-data">
             <table id="imageLoaderTable">
                 {% csrf_token %}
@@ -12,7 +13,7 @@
             <div class="fill-div paddingTopBtn">
                 <button type="submit" id="uploadNextBtn" name="uploadNext">Save and Upload Next</button>
                 <button type="submit" id="uploadExit" name="uploadExit">Save and Exit</button>
-                <button id="exit" name="exit">Exit</button>
+                <button type="submit" id="exit" name="exit" value="exit" form="fakeForm">Exit</button>
             </div>
         </form>
     </div>

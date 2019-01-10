@@ -31,5 +31,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = ('email','first_name','last_name','birth_date')
     filter_horizontal = ()
 
+
 admin.site.register(CustomUser, UserAdmin)
+admin.site.register(Avatar)
 admin.site.unregister(Group)

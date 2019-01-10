@@ -21,7 +21,6 @@ class PropertyChangeForm(forms.ModelForm):
         }
 
 class PropertyImageForm(forms.ModelForm):
-    #image = forms.ImageField(label='Image')    
     class Meta:
         model = AccommodationImage
         fields = ('image', )
@@ -33,6 +32,6 @@ class ReservationForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    service = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'service1,service2,...'}))
+    service = forms.CharField(required=False, max_length=100, widget=forms.TextInput(attrs={'placeholder': 'wifi,spa,cucina,...'}))
     inDate = forms.DateField(required=True)
     outDate = forms.DateField(required=True)

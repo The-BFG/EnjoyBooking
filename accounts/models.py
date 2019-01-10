@@ -5,7 +5,7 @@ from django.core.validators import RegexValidator
 import os
 from django.conf import settings
 
-# Create your models here.
+# Create your models here.  
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password, first_name=None, last_name=None, birth_date=None, city=None, address=None, postal_code=None, phone=None):
         if not email:

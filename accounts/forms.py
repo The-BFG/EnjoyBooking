@@ -68,13 +68,18 @@ class EditProfileForm(forms.ModelForm):
         )
 
 class AvatarForm(forms.ModelForm):
-    #image = forms.ImageField(label='Image')    
     class Meta:
         model = Avatar
         fields = ('avatar', ) 
+        widgets = {
+            'avatar': forms.FileInput
+        }
 
 class ChangeAvatarForm(forms.ModelForm):
     class Meta:
         model = Avatar
         fields = ('avatar',)
         labels = {'avatar': ('Select profile picture'), }
+        widgets = {
+            'avatar': forms.FileInput
+        }
