@@ -5,7 +5,7 @@ University project written in python 3.6 using Django 2.0.5. A booking site in A
 # Installation instructions:
 
 Corretto settaggio per accedere correttamente al DB da Django:  
-#accedere a mysql con utente con permessi elevati.
+Accedere a mysql con utente con permessi elevati.
 ```sh
 mysql -u root -p 
   
@@ -30,7 +30,7 @@ pip3 install --user django-mysql
 pip3 install --user geopy  
 git clone https://github.com/The-BFG/EnjoyBooking.git  
 ```
-11_1_se si vuole avere un progetto pulito senza dati allora eliminare tutti i file *.py presenti in migrations tranne "__init__.py" e tutti i file *.pyc in migrations/__pycache__/*pyc dopodichè dare i comandi:  
+Se si vuole avere un progetto pulito senza dati allora eliminare tutti i file *.py presenti in migrations tranne "__init__.py" e tutti i file *.pyc in migrations/__pycache__/*pyc dopodichè dare i comandi:  
 ```sh
 python manage.py makemigrations [app]  
 python manage.py migrate  
