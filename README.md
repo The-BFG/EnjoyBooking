@@ -53,10 +53,10 @@ Alla fine del test del progetto usare i seguenti comandi per eliminare tutto:
 mysql -u root -p  
 ```
 ```mysql
-1_drop database enjoyBooking;  
-2_REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'enjoy'@'localhost';  
-3_DROP USER 'enjoy'@'localhost';  
-4_exit
+DROP DATABASE enjoyBooking;  
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'enjoy'@'localhost';  
+DROP USER 'enjoy'@'localhost';  
+EXIT
 ```  
   
 Credenziali admin django:  
